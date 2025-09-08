@@ -1,6 +1,32 @@
-baseURL: https://robbndahood.github.io
+baseURL: https://robbndahood.github.io/
 languageCode: en-us
-title: My Personal Page
+title: Robert Leon
+theme: mytheme
+relativeURLs: true
+canonifyURLs: true
+pagination.pagerSize: 10
 caches:
   images:
     dir: :cacheDir/images
+    
+
+params:
+  tagline: "Battery engineer → data scientist & software dev"
+  author: "Robert Leon"
+  email: "hello@example.com"
+  github: "https://github.com/robbndahood"
+
+menu:
+  main:
+    - name: "About"
+      url: #about
+      weight: 10
+    - name: Projects
+      url: #projects
+      weight: 20
+    - name: Writing
+      url: #writing
+      weight: 30
+    - name: "Contact"
+      url: #contact
+      weight: 40
