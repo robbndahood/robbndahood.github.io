@@ -1,10 +1,23 @@
 {{/* layouts/partials/header.html */}}
 
 
-<nav class="nav">
+<nav class="nav" data-nav>
   <div class="brand">
     <span class="dot"></span>
     {{ .Site.Title }}
   </div>
+
   {{ partial "nav.html" . }}
+
+
+  <button
+    class="nav-toggle"
+    aria-expanded="false"
+    aria-controls="site-menu"
+    aria-label="Toggle navigation"
+  >
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
 </nav>

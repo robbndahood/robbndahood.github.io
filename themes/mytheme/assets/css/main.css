@@ -9,6 +9,7 @@
   --maxw: 1100px;
   --radius: 16px;
   --header-h: 72px;
+  --side-margin: 18px;
 }
 
 /* sticky header pinned to top */
@@ -80,9 +81,10 @@ a {
 .nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start; /* brand on left */
   gap: 12px;
   padding: 16px 0;
+  width: 100%; /* allow auto margins to push items to far edge */
 }
 .brand {
   display: flex;
@@ -98,8 +100,9 @@ a {
   border-radius: 50%;
 }
 .menu {
-  display: flex;
+  display: none; /* hidden until .open */
   gap: 18px;
+  margin-left: var(--side-margin);
 }
 .menu a {
   color: var(--sub);
@@ -109,7 +112,72 @@ a {
   color: var(--text);
 }
 
-/* hero */
+/* hamburger button (always visible) */
+.nav-toggle {
+  display: inline-block;
+  background: none;
+  border: 1px solid #1d242d;
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+  position: relative;
+  margin-left: auto;
+}
+.nav-toggle:hover {
+  border-color: #2b3b4a;
+}
+.nav-toggle .bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--sub);
+  margin: 5px 0;
+  transition:
+    transform 0.35s ease,
+    opacity 0.25s ease;
+}
+.nav-toggle[aria-expanded="true"] .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .bar:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* dropdown panel (all widths) */
+.nav {
+  position: relative;
+}
+.menu {
+  position: absolute;
+  top: var(--header-h);
+  right: var(--side-margin);
+  background: rgba(15, 19, 24, 0.97);
+  border: 1px solid #1d242d;
+  border-radius: 14px;
+  padding: 14px 18px;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 8px 30px -6px rgba(0, 0, 0, 0.55);
+  min-width: 200px;
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transform: translateY(-6px) scale(0.98);
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+  margin-left: 0;
+  z-index: 1000;
+}
+.menu.open {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
 .hero {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -236,6 +304,7 @@ h2 {
   }
 }
 @media (max-width: 640px) {
+  /* Behavior already handled by dropdown styles; no stacking needed */
   .grid {
     grid-template-columns: 1fr;
   }

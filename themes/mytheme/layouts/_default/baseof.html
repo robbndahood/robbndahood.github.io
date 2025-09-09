@@ -22,6 +22,12 @@
     </div>
 
     {{ block "scripts" . }}
+      {{ $nav := resources.Get "js/nav.js" | minify | fingerprint }}
+      <script
+        defer
+        src="{{ $nav.RelPermalink }}"
+        integrity="{{ $nav.Data.Integrity }}"
+      ></script>
     {{ end }}
   </body>
 </html>
