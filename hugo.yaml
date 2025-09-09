@@ -3,30 +3,36 @@ languageCode: en-us
 title: Robert Leon
 theme: mytheme
 relativeURLs: true
-canonifyURLs: true
+canonifyURLs: false
 pagination.pagerSize: 10
 caches:
   images:
     dir: :cacheDir/images
-    
 
 params:
-  tagline: "Battery engineer → data scientist & software dev"
+  tagline: "Battery Engineer → Data Scientist & Software Dev"
   author: "Robert Leon"
-  email: "hello@example.com"
+  email: "robert.a.leon@pm.me"
   github: "https://github.com/robbndahood"
 
 menu:
   main:
+    - name: "Home"
+      identifier: "home"
+      url: "/"
+      weight: 1
     - name: "About"
-      url: #about
+      url: "about/"
       weight: 10
+      identifier: "about"
     - name: Projects
       url: #projects
       weight: 20
+      identifier: "projects"
     - name: Writing
       url: #writing
       weight: 30
     - name: "Contact"
       url: #contact
       weight: 40
+      identifier: "contact"

@@ -33,3 +33,15 @@ go.work.sum
 
 # MacOS
 .DS_Store
+
+# hugo 
+public/*
+resources/_gen/
+
+hugo.exe
+hugo.linux
+hugo.darwin
+node_modules/
+dist
+tmp
+public/index.xml

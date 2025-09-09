@@ -1,0 +1,23 @@
+{{ $home := "/" | relLangURL }}
+
+
+<div class="menu">
+  {{ range .Site.Menus.main }}
+    {{ $u := .URL }}
+    {{ if hasPrefix $u "#" }}
+      {{/* Fragment-only link: on home use in-page scroll; elsewhere go to home#fragment */}}
+      <a
+        href="{{ if $.IsHome }}
+          {{ $u }}
+        {{ else }}
+          {{ printf "%s%s" $home $u }}
+        {{ end }}"
+      >
+        {{ .Name }}
+      </a>
+    {{ else }}
+      {{/* Normal relative/absolute URL: respect baseURL and language */}}
+      <a href="{{ $u | relLangURL }}">{{ .Name }}</a>
+    {{ end }}
+  {{ end }}
+</div>

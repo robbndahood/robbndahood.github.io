@@ -1,0 +1,15 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>{{ with .Title }}{{ . }} — {{ end }}{{ .Site.Title }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.tagline }}{{ end }}">
+
+{{ $styles := resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="preload" as="style" href="{{ $styles.RelPermalink }}">
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
+
+<link rel="icon" href="{{ "favicon.ico" | relURL }}">
+<meta property="og:title" content="{{ .Title | default .Site.Title }}">
+<meta property="og:description" content="{{ .Description | default .Site.Params.tagline }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ .Permalink }}">
