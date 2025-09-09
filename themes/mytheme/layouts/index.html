@@ -1,57 +1,74 @@
 {{ define "main" }}
-
-<header class="hero card">
-  <div class="hero-copy">
-    <span class="kicker">Engineer • Data Scientist • SWE</span>
-    <h1>Building reliable data + software systems</h1>
-    <p class="lead">{{ .Site.Params.tagline }}</p>
-    <div class="cta">
-      <a class="btn primary" href="#projects">View Projects</a>
-      <a class="btn" href="#contact">Contact</a>
+  <header class="hero card">
+    <div class="hero-copy">
+      <span class="kicker">Engineer • Data Scientist • SWE</span>
+      <h1>Building reliable data + software systems</h1>
+      <p class="lead">{{ .Site.Params.tagline }}</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">View Projects</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
     </div>
-  </div>
-  <div class="hero-shot">
-    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200&auto=format&fit=crop"
-         alt="workspace">
-  </div>
-</header>
+    <div class="hero-shot">
+      <img
+        src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200&auto=format&fit=crop"
+        alt="workspace"
+      />
+    </div>
+  </header>
 
-<section id="about">
-  <h2>About</h2>
-  <div class="muted">
-    {{/* Optional: render homepage content if present */}}
-    {{ with .Content }}{{ . }}{{ else }}
-      I work across data engineering, ML, and backend development. I like type-safe schemas,
-      reproducible analysis, and boring infrastructure.
+  <section id="about">
+    <h2>About</h2>
+    {{/* Pull the about page (first regular page with .File.Path containing about.md) */}}
+    {{ $about := site.GetPage "about" }}
+    <div class="muted">
+      {{ if $about }}
+        {{ with $about.Summary }}{{ . | safeHTML }}{{ end }}
+      {{ else }}
+        I work across data engineering, ML, and backend development. I like
+        type-safe schemas, reproducible analysis, and boring infrastructure.
+      {{ end }}
+    </div>
+    {{ if $about }}
+      <div class="cta" style="margin-top:12px;">
+        <a class="btn" href="{{ $about.RelPermalink }}">Read more →</a>
+      </div>
     {{ end }}
-  </div>
-</section>
+  </section>
 
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="grid">
-    {{ $projects := site.Data.projects }}
-    {{ range $projects }}
-      <article class="card project">
-        <h3><a href="{{ .link }}">{{ .title }}</a></h3>
-        <p class="muted">{{ .description }}</p>
-        <div class="tags">
-          {{ range .tags }}<span class="tag">{{ . }}</span>{{ end }}
-        </div>
-      </article>
-    {{ end }}
-  </div>
-</section>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid">
+      {{ $projects := site.Data.projects }}
+      {{ range $projects }}
+        <article class="card project">
+          <h3><a href="{{ .link }}">{{ .title }}</a></h3>
+          <p class="muted">{{ .description }}</p>
+          <div class="tags">
+            {{ range .tags }}<span class="tag">{{ . }}</span>{{ end }}
+          </div>
+        </article>
+      {{ end }}
+    </div>
+  </section>
 
-<section id="writing">
-  <h2>Writing</h2>
-  <p class="muted">Longer posts live at <a href="{{ "posts/" | relURL }}">/posts</a>.</p>
-</section>
+  <section id="writing">
+    <h2>Writing</h2>
+    <p class="muted">
+      Longer posts live at
+      <a href="{{ "posts/" | relURL }}">/posts</a>
+      .
+    </p>
+  </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p class="muted">Email <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a> or say hi on
-    <a href="{{ .Site.Params.github }}">GitHub</a>.</p>
-</section>
-
+  <section id="contact">
+    <h2>Contact</h2>
+    <p class="muted">
+      Email
+      <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
+      or say hi on
+      <a href="{{ .Site.Params.github }}">GitHub</a>
+      .
+    </p>
+  </section>
 {{ end }}

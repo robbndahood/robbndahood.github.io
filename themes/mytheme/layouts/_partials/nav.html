@@ -3,7 +3,7 @@
 {{- $isHome := .IsHome -}}
 
 
-<div class="menu">
+<div class="menu" id="site-menu" data-menu>
   {{- range .Site.Menus.main }}
     {{- $menu := . -}}
     {{- $raw := $menu.URL -}}
