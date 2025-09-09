@@ -1,23 +1,31 @@
-{{ $home := "/" | relLangURL }}
+{{- /* Improved navigation partial: builds clean hrefs (no stray whitespace) and marks active page */ -}}
+{{- $home := "/" | relLangURL -}}
+{{- $isHome := .IsHome -}}
 
 
 <div class="menu">
-  {{ range .Site.Menus.main }}
-    {{ $u := .URL }}
-    {{ if hasPrefix $u "#" }}
-      {{/* Fragment-only link: on home use in-page scroll; elsewhere go to home#fragment */}}
-      <a
-        href="{{ if $.IsHome }}
-          {{ $u }}
-        {{ else }}
-          {{ printf "%s%s" $home $u }}
-        {{ end }}"
-      >
-        {{ .Name }}
-      </a>
-    {{ else }}
-      {{/* Normal relative/absolute URL: respect baseURL and language */}}
-      <a href="{{ $u | relLangURL }}">{{ .Name }}</a>
-    {{ end }}
-  {{ end }}
+  {{- range .Site.Menus.main }}
+    {{- $menu := . -}}
+    {{- $raw := $menu.URL -}}
+    {{- /* Compute final href: fragment links scroll on home, else jump back to home#fragment. Other links -> relLangURL */ -}}
+    {{- $href := cond (hasPrefix $raw "#") (cond $isHome $raw (printf "%s%s" $home $raw)) ($raw | relLangURL) -}}
+
+    {{- /* Determine active state. Prefer .Page if present; fall back to URL comparisons (ignoring fragment & trailing slash). */ -}}
+    {{- $isActive := false -}}
+    {{- if and $menu.Page (eq $menu.Page.RelPermalink $.RelPermalink) -}}
+      {{- $isActive = true -}}
+    {{- else if and (not (hasPrefix $raw "#")) (eq (replaceRE "/$" "" $.RelPermalink) (replaceRE "/$" "" ($raw | relLangURL))) -}}
+      {{- $isActive = true -}}
+    {{- else if and (eq $raw "/") $isHome -}}
+      {{- $isActive = true -}}
+    {{- end -}}
+
+
+    <a
+      href="{{ $href }}"
+      {{ if $isActive }}class="active" aria-current="page"{{ end }}
+    >
+      {{ $menu.Name }}
+    </a>
+  {{- end }}
 </div>

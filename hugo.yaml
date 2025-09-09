@@ -22,17 +22,17 @@ menu:
       url: "/"
       weight: 1
     - name: "About"
-      url: "about/"
+      url: "#about"
       weight: 10
       identifier: "about"
     - name: Projects
-      url: #projects
+      url: "#projects"
       weight: 20
       identifier: "projects"
     - name: Writing
-      url: #writing
+      url: "#writing"
       weight: 30
     - name: "Contact"
-      url: #contact
+      url: "#contact"
       weight: 40
       identifier: "contact"

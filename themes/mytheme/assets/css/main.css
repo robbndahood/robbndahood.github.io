@@ -179,6 +179,8 @@ h1 {
 /* sections */
 section {
   padding: 40px 0;
+  /* Offset for sticky header when using in-page anchors */
+  scroll-margin-top: calc(var(--header-h) + 16px);
 }
 h2 {
   font-size: 22px;
