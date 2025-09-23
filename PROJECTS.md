@@ -35,3 +35,24 @@ If no non-draft projects exist, a friendly message is shown on the homepage.
 ## Migration from Data File
 
 If you previously had `data/projects.yaml`, it's no longer used. You can remove it (or leave it unused). Convert entries by making one project page per item.
+
+## Detail Pages
+
+Each project lives in a page bundle folder: `content/projects/<slug>/index.md`. Clicking a homepage or /projects card navigates to `/projects/<slug>/` which uses `projects/single.html`.
+
+Front matter fields on single pages:
+
+- `title` – Page heading
+- `date` – Shown if present
+- `tags` – Inline badges
+- `link` – Renders a “Live” button
+- `repo` – Renders a “Code” button
+- `image` – If present and found as a resource, processed (`Fit 1200x800`) and displayed above content
+
+## Images
+
+Put the referenced file (e.g. `screenshot.png`) alongside `index.md`. Set `image = 'screenshot.png'`. High‑resolution sources are fine; Hugo will resize.
+
+## List Page
+
+The `/projects/` route uses `projects/list.html` to show all non-draft projects sorted by `weight`.

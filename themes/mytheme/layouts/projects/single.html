@@ -1,0 +1,47 @@
+{{ define "main" }}
+  <article class="project-detail">
+    <header class="project-header">
+      <h1>{{ .Title }}</h1>
+      <div class="meta-line">
+        {{ with .Date }}
+          <time datetime="{{ .Format "2006-01-02" }}">
+            {{ .Format "Jan 2, 2006" }}
+          </time>
+        {{ end }}
+        {{ with .Params.tags }}
+          <span class="dot">•</span>
+          <ul class="inline-tags">
+            {{ range . }}<li>{{ . }}</li>{{ end }}
+          </ul>
+        {{ end }}
+      </div>
+      <div class="project-links">
+        {{ with .Params.link }}
+          <a class="btn sm" href="{{ . }}" target="_blank" rel="noopener">
+            Live ↗
+          </a>
+        {{ end }}
+        {{ with .Params.repo }}
+          <a class="btn sm" href="{{ . }}" target="_blank" rel="noopener">
+            Code
+          </a>
+        {{ end }}
+      </div>
+      {{ with .Params.image }}
+        {{ $img := resources.GetMatch . }}
+        {{ if $img }}
+          {{ $thumb := $img.Fit "1200x800" }}
+          <figure class="project-hero">
+            <img
+              src="{{ $thumb.RelPermalink }}"
+              alt="Screenshot of {{ $.Title }}"
+            />
+          </figure>
+        {{ end }}
+      {{ end }}
+    </header>
+    <div class="content">
+      {{ .Content }}
+    </div>
+  </article>
+{{ end }}
