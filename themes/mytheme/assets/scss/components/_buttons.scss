@@ -1,0 +1,15 @@
+.btn {
+  padding: 10px 14px;
+  border: 1px solid #2a2947;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #182029, #11161d);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  font-weight: 600;
+}
+.btn:hover {
+  border-color: #3a4d61;
+}
+.btn.primary {
+  background: linear-gradient(180deg, #1e3244, #182737);
+  border-color: #406788;
+}

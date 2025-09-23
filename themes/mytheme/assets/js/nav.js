@@ -9,14 +9,14 @@
   function closeOnEscape(e) {
     if (e.key === "Escape") {
       btn.setAttribute("aria-expanded", "false");
-      menu.classList.remove("open");
+      nav.classList.remove("is-open");
       document.removeEventListener("keydown", closeOnEscape);
       document.removeEventListener("pointerdown", handleClickOutside, true);
     }
   }
 
   function handleClickOutside(ev) {
-    if (!menu.classList.contains("open")) return;
+    if (!nav.classList.contains("is-open")) return;
     const target = ev.target;
     if (
       target instanceof Node &&
@@ -26,7 +26,7 @@
     }
     // Close menu
     btn.setAttribute("aria-expanded", "false");
-    menu.classList.remove("open");
+    nav.classList.remove("is-open");
     document.removeEventListener("keydown", closeOnEscape);
     document.removeEventListener("pointerdown", handleClickOutside, true);
   }
@@ -35,7 +35,7 @@
     const expanded = btn.getAttribute("aria-expanded") === "true";
     const next = !expanded;
     btn.setAttribute("aria-expanded", String(next));
-    menu.classList.toggle("open", next);
+    nav.classList.toggle("is-open", next);
     if (next) {
       document.addEventListener("keydown", closeOnEscape);
       // use capture so we run before focus shifts or other handlers
@@ -51,7 +51,7 @@
     const target = e.target;
     if (target instanceof HTMLElement && target.tagName === "A") {
       btn.setAttribute("aria-expanded", "false");
-      menu.classList.remove("open");
+      nav.classList.remove("is-open");
       document.removeEventListener("keydown", closeOnEscape);
       document.removeEventListener("pointerdown", handleClickOutside, true);
     }

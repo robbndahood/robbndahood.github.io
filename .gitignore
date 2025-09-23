@@ -35,7 +35,7 @@ go.work.sum
 .DS_Store
 
 # hugo 
-public/*
+public/
 resources/_gen/
 
 hugo.exe

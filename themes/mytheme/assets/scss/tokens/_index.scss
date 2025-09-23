@@ -1,0 +1,38 @@
+// Design tokens and helper mixins
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 20px;
+$space-6: 24px;
+
+$radius: 16px;
+$header-h: 72px;
+
+$bg: #0b0d10;
+$muted: #12161b;
+$card: #0f1318;
+$text: #e8edf2;
+$sub: #a8b3bf;
+$brand: #67b7ff;
+$accent: #7af3c5;
+$border: #1d242d;
+
+@mixin bp($max) {
+  @media (max-width: $max) {
+    @content;
+  }
+}
+
+:root {
+  --bg: #{$bg};
+  --muted: #{$muted};
+  --card: #{$card};
+  --text: #{$text};
+  --sub: #{$sub};
+  --brand: #{$brand};
+  --accent: #{$accent};
+  --radius: #{$radius};
+  --header-h: #{$header-h};
+  --side-margin: 18px;
+}

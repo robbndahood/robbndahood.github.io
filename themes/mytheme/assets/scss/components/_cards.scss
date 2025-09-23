@@ -1,0 +1,17 @@
+.card {
+  background: linear-gradient(180deg, var(--card), #0c0f13);
+  border: 1px solid #1c232c;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+.hero-shot {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+.hero-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.95;
+  filter: saturate(0.85);
+}

@@ -1,0 +1,42 @@
+@use "../tokens" as *;
+
+section {
+  padding: 40px 0;
+  scroll-margin-top: calc(var(--header-h) + 16px);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.project {
+  padding: 18px;
+}
+.project h3 {
+  margin: 6px 0 6px;
+  font-size: 18px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.tag {
+  padding: 2px 8px;
+  border: 1px solid #2a3947;
+  border-radius: 999px;
+  color: #9fb4c7;
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

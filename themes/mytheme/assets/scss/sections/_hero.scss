@@ -1,0 +1,35 @@
+@use "../tokens" as *;
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 28px;
+  align-items: center;
+  padding: 56px 18px;
+  border-bottom: 1px solid #1d242d;
+}
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px;
+  border: 1px solid #254157;
+  border-radius: 999px;
+  color: #a9c7db;
+  background: rgba(103, 183, 255, 0.06);
+}
+.lead {
+  font-size: 18px;
+  color: var(--sub);
+}
+.cta {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
