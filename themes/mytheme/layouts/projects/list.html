@@ -35,9 +35,9 @@
                 </a>
               {{ end }}
             </div>
-            {{ $desc := .Params.description }}
-            {{ if not $desc }}{{ $desc = .Summary }}{{ end }}
-            {{ if $desc }}<p class="muted">{{ $desc | plainify }}</p>{{ end }}
+            {{ with .Params.description }}
+              <p class="muted">{{ . | markdownify | plainify }}</p>
+            {{ end }}
             {{ with .Params.tags }}
               <div class="tags">
                 {{ range . }}<span class="tag">{{ . }}</span>{{ end }}

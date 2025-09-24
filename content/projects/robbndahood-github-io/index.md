@@ -2,7 +2,7 @@
 # Title defaults to a title-cased version of the file name
 title = 'robbndahood.github.io'
 date = '2025-09-23T14:37:02-07:00'
-description = ''
+description = 'Personal/Professional website developed using Hugo framework'
 tags = ['CSS', 'HTML', 'Javascript', 'Hugo']
 categories = ['Projects']
 link = ''          # External link (live site / demo). Leave empty if none.
@@ -11,8 +11,6 @@ image = ''         # Relative path to an image (place in same bundle folder) e.g
 weight = 100       # Lower numbers appear first.
 draft = false
 +++
-
-Personal/Professional website developed using Hugo framework.
 
 ## Overview
 

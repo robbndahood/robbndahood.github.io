@@ -24,6 +24,10 @@ Projects are sorted by `weight` ascending. Use gaps (e.g. 10, 20, 30) so you can
 
 If `description` is empty the template will fall back to the page summary (text before `<!--more-->`).
 
+### Teaser Text
+
+Project cards display the `description` front matter exactly (after stripping markdown formatting). Keep it short—1 concise sentence. If you omit `description`, no teaser line is shown.
+
 ## Repository Icon
 
 If you set `repo = 'https://github.com/you/project'` in the front matter, a GitHub icon button appears in the project card header linking to the repository (opens in a new tab). Leave it blank to hide the icon.
