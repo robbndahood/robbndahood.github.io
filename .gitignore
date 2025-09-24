@@ -45,3 +45,4 @@ node_modules/
 dist
 tmp
 public/index.xml
+.vscode/settings.json
